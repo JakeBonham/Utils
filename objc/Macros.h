@@ -3,17 +3,26 @@
 //
 //  Created by John Iacoviello on 11/26/11.
 //
+//  Updated and forked by Jake Bonham
+//
+
+//iphone 5 check
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 
 // Constants
-#define APP_VERSION                             [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]
+#define APP_VERSION                             [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
+#define APP_BUILD_VERSION                       [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleVersion"]
 #define APP_NAME                                [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleName"]
+#define APP_DISPLAY_NAME                        [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleDisplayName"]
 #define APP_DELEGATE                            [[UIApplication sharedApplication] delegate]
 #define USER_DEFAULTS                           [NSUserDefaults standardUserDefaults]
 #define APPLICATION                             [UIApplication sharedApplication]
 #define BUNDLE                                  [NSBundle mainBundle]
 #define MAIN_SCREEN                             [UIScreen mainScreen]
 #define FILE_MANAGER                            [NSFileManager defaultManager]
-#define DOCUMENTS_DIR                           [[FILE_MANAGER URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject]
+#define APP_SUPPORT_DIR                         [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask,YES) objectAtIndex:0]
+#define CACHES_DIR                              [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0]
+#define DOCUMENTS_DIR                           [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0]
 #define NAV_BAR                                 self.navigationController.navigationBar
 #define TAB_BAR                                 self.tabBarController.tabBar
 #define DATE_COMPONENTS                         NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
