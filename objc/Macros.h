@@ -26,7 +26,9 @@
 #define NAV_BAR                                 self.navigationController.navigationBar
 #define TAB_BAR                                 self.tabBarController.tabBar
 #define DATE_COMPONENTS                         NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
-#define IS_PAD                                  ([[UIDevice currentDevice] interfaceIdiom] == UIUserInterfaceIdiomPad)
+#define IS_PAD                                  [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad
+
+#define fileExistsAtPath(path)                  [FILE_MANAGER fileExistsAtPath: path]
 
 // Props
 #define ScreenWidth                             [MAIN_SCREEN bounds].size.width
@@ -51,7 +53,6 @@
 #define distance(a,b)                           sqrtf((a-b) * (a-b))
 #define point(x,y)                              CGPointMake(x, y)
 #define append(a,b)                             [a stringByAppendingString:b];
-#define fileExistsAtPath(path)                  [FILE_MANAGER fileExistsAtPath: path]
 
 // Colors
 #define hex_rgba(c)                             [UIColor colorWithRed:((c>>24)&0xFF)/255.0 green:((c>>16)&0xFF)/255.0 blue:((c>>8)&0xFF)/255.0 alpha:((c)&0xFF)/255.0]
@@ -99,6 +100,9 @@
 #define setDoubleForKey(v, k)                   [USER_DEFAULTS setDouble:v forKey:k]
 #define setURLForKey(v, k)                      [USER_DEFAULTS setURL:v forKey:k]
 #define saveUserDefaults()                      [USER_DEFAULTS synchronize]
+
+//Clear user defaults
+#define clearAllUserDefaults()                  [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:[[NSBundle mainBundle] bundleIdentifier]];
 
 // NSLog only in debug mode
 #if DEBUG == 1
