@@ -6,8 +6,10 @@
 //  Updated and forked by Jake Bonham
 //
 
-//iphone 5 check
+//device checks
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+#define IS_PAD                                  [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad
+
 
 // Constants
 #define APP_VERSION                             [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
@@ -26,7 +28,7 @@
 #define NAV_BAR                                 self.navigationController.navigationBar
 #define TAB_BAR                                 self.tabBarController.tabBar
 #define DATE_COMPONENTS                         NSYearCalendarUnit|NSMonthCalendarUnit|NSDayCalendarUnit
-#define IS_PAD                                  [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad
+
 
 #define fileExistsAtPath(path)                  [FILE_MANAGER fileExistsAtPath: path]
 
