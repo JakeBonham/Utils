@@ -10,6 +10,8 @@
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 #define IS_PAD                                  [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad
 
+#define IS_OS_6_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0)
+#define IS_OS_7_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
 
 // Constants
 #define APP_VERSION                             [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]
